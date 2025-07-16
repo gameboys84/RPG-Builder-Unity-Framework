@@ -1,0 +1,80 @@
+──────────────────────────────────────────────────────────────
+RPG BUILDER COMMUNITY LICENSE 1.0.0
+(c) 2025 Blink Studios
+──────────────────────────────────────────────────────────────
+
+IN SHORT:
+• Make games, sell games: Any number of commercial or free games
+  built with RPG Builder are totally fine. You never owe us royalties.
+
+• Tinker all you like: Fork the code, add features, keep it in‑house or contribute,
+  Internal studio tools, jam projects, side–quests… go wild!
+
+• You cannot sell the editor: You can’t ship, market, rent, or
+  otherwise provide RPG Builder itself (or your custom fork of it) to
+  other people. That includes asset‑store listings, one time purchases or SaaS offerings.
+
+• Sharing back is optional but appreciated: Pull requests are
+  welcome but they aren’t required.
+
+• We keep the name: “RPG Builder” stays a Blink Studios thing.
+
+
+──────────────────────────────────────────────────────────────
+FULL LEGAL TERMS
+──────────────────────────────────────────────────────────────
+This section is based verbatim on the Polyform Internal Use License
+ v1.0.0 :contentReference[oaicite:2]{index=2}, with one extra clause (§ 6)
+to let you ship your games.  Headings are for clarity only.
+
+1. Grant:  
+   Blink Studios (“Licensor”) grants you the rights below so long as you
+   follow this License.
+
+2. Internal Use Is Always OK:
+   You may use, copy, run, test, and modify the Software inside your own
+   organization for any purpose, including commercial work.  These are
+   “Permitted Uses”.
+
+3. No Redistribution of the Software:  
+   Outside those Permitted Uses you must not distribute, sublicense,
+   sell, lease, or otherwise make the Software (in source or object
+   form) available to anyone else.
+
+4. Modifications: 
+   You may create and use Modifications internally.  All Modifications
+   count as part of the Software and inherit this License.
+
+5. Conditions:  
+   a. Keep all copyright notices and this License in any source you keep.  
+   b. Clearly mark your changes.  
+   c. If you somehow distribute the Software in breach of § 3, you’re
+      also in breach of this License.
+
+6. Output Exception (Ship Your Games!): 
+   You may distribute, sell, or otherwise exploit any *Output* you
+   create with the Software — for example, compiled game builds — even
+   for profit, **provided** the Software itself (including editor
+   scripts and source code) is not exposed or shipped, except as an
+   inseparable, compiled‑only component strictly required to run the
+   Output.
+
+7. Trademarks:
+   This License doesn’t grant you rights to Blink Studios trademarks or
+   logos.
+
+8. Disclaimer of Warranty:
+   THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND.
+
+9. Limitation of Liability:  
+   LICENSOR IS NEVER LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES ARISING FROM THE
+   SOFTWARE OR THIS LICENSE.
+
+10. Termination:
+    If you break any term of this License, your rights end immediately.
+    Upon termination you must stop using the Software and destroy all
+    copies in your possession.
+
+END OF TERMS
+──────────────────────────────────────────────────────────────
