@@ -70,7 +70,7 @@ MonoBehaviour:
     teleportDirectionalDistance: 30
     teleportDirectionalBlockLayers:
       serializedVersion: 2
-      m_Bits: 4608
+      m_Bits: 32
     lootTableID: -1
     petNPCDataID: -1
     petDuration: 60
@@ -137,7 +137,17 @@ MonoBehaviour:
     mountCanAim: 0
     showStealthActionBar: 1
     nestedEffects: []
-    VisualEffectEntries: []
+    VisualEffectEntries:
+    - Template: {fileID: 11400000, guid: 71b73a751bfd30a4eba533d2440cbd1d, type: 2}
+      ActivationType: 0
+      UseNodeSocket: 0
+      NodeSocket: {fileID: 0}
+      ParentedToCaster: 0
+      PositionOffset: {x: 0, y: 0, z: 0}
+      Scale: {x: 1, y: 1, z: 1}
+      Endless: 0
+      Duration: 1
+      Delay: 0
     AnimationEntries: []
     SoundEntries: []
     visualEffects: []

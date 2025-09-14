@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486a667198744f64a9ff8dc9269ee83c, type: 3}
+  m_Name: Teleport_VISUAL_EFFECT
+  m_EditorClassIdentifier: 
+  ID: -1
+  entryName: Teleport
+  entryFileName: Teleport_VISUAL_EFFECT
+  entryDisplayName: 
+  entryIcon: {fileID: 0}
+  entryDescription: 
+  Prefabs:
+  - {fileID: 6069727050727950396, guid: 3ffa82e001eaf8840b728232e94a3b73, type: 3}
+  SoundTemplates:
+  - {fileID: 11400000, guid: ba8a2c4a25afe7440894ca17af2b5d0f, type: 2}
+  ParentSoundToPrefab: 0
+  IsDestroyedOnDeath: 0
+  IsDestroyedOnStun: 0
+  IsDestroyedOnStealth: 0
+  IsDestroyedOnStealthEnd: 0
