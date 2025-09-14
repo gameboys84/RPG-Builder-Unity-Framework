@@ -9,6 +9,7 @@ namespace BLINK.RPGBuilder.Managers
 {
     public class LootPanel : DisplayPanel
     {
+        private static readonly int Looting = Animator.StringToHash("Looting");
         [SerializeField] private CanvasGroup thisCG;
         [SerializeField] private Transform lootItemsSlotsParent;
         [SerializeField] private GameObject lootItemSlotPrefab;
@@ -100,7 +101,7 @@ namespace BLINK.RPGBuilder.Managers
 
         public void DisplayLoot(LootBag bag)
         {
-            GameState.playerEntity.controllerEssentials.anim.SetTrigger("Looting");
+            GameState.playerEntity.controllerEssentials.anim.SetTrigger(Looting);
             currentLootBag = bag;
             if(!opened)Show();
             ClearAllLootItemSlots();

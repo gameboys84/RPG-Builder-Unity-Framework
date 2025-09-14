@@ -7,6 +7,7 @@ namespace BLINK.RPGBuilder.AI
     {
         private AIStateCircleTargetTemplate circleTargetTemplate;
 
+#pragma warning disable CS0414 // Field is assigned but its value is never used
         private int currentMovementState = 6;
 
         private float circlingValue = 0;

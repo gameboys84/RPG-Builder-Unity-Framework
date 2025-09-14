@@ -44,8 +44,10 @@ public class CombatEvents : MonoBehaviour
     public static event Action<CombatCalculations.HealResult> Healed;
     
     // PETS
+#pragma warning disable CS0067 // Event is never used
     public static event Action PlayerSummonedPet;
     public static event Action PlayerUnsummonedPet;
+
     public static event Action PlayerPetUpdate;
     
     public static event Action PlayerPetsFollow;

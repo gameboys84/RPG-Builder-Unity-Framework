@@ -4,6 +4,8 @@ namespace BLINK.Controller
 {
 	public class PlayerInput : MonoBehaviour
 	{
+		private static readonly int MoveDirectionX = Animator.StringToHash("MoveDirectionX");
+		private static readonly int MoveDirectionY = Animator.StringToHash("MoveDirectionY");
 		[HideInInspector] public float MoveAxisDeadZone = 0.2f;
 		[HideInInspector] public bool useNewKeys;
 		[HideInInspector] public float smoothTime = 1, dampenTime = 0.2f;
@@ -79,25 +81,25 @@ namespace BLINK.Controller
 
 			if (!useNewKeys)
 			{
-				GameState.playerEntity.controllerEssentials.anim.SetFloat("MoveDirectionX", moveInput.x);
-				GameState.playerEntity.controllerEssentials.anim.SetFloat("MoveDirectionY", moveInput.y);
+				GameState.playerEntity.controllerEssentials.anim.SetFloat(MoveDirectionX, moveInput.x);
+				GameState.playerEntity.controllerEssentials.anim.SetFloat(MoveDirectionY, moveInput.y);
 				if (GameState.playerEntity.IsMounted())
 				{
-					GameState.playerEntity.GetMountAnimator().SetFloat("MoveDirectionX", moveInput.x);
-					GameState.playerEntity.GetMountAnimator().SetFloat("MoveDirectionY", moveInput.y);
+					GameState.playerEntity.GetMountAnimator().SetFloat(MoveDirectionX, moveInput.x);
+					GameState.playerEntity.GetMountAnimator().SetFloat(MoveDirectionY, moveInput.y);
 				}
 			}
 			else
 			{
-				GameState.playerEntity.controllerEssentials.anim.SetFloat("MoveDirectionX", moveInput.x,
+				GameState.playerEntity.controllerEssentials.anim.SetFloat(MoveDirectionX, moveInput.x,
 					dampenTime, Time.deltaTime * smoothTime);
-				GameState.playerEntity.controllerEssentials.anim.SetFloat("MoveDirectionY", moveInput.y,
+				GameState.playerEntity.controllerEssentials.anim.SetFloat(MoveDirectionY, moveInput.y,
 					dampenTime, Time.deltaTime * smoothTime);
 				if (GameState.playerEntity.IsMounted())
 				{
-					GameState.playerEntity.GetMountAnimator().SetFloat("MoveDirectionX", moveInput.x,
+					GameState.playerEntity.GetMountAnimator().SetFloat(MoveDirectionX, moveInput.x,
 						dampenTime, Time.deltaTime * smoothTime);
-					GameState.playerEntity.GetMountAnimator().SetFloat("MoveDirectionY", moveInput.y,
+					GameState.playerEntity.GetMountAnimator().SetFloat(MoveDirectionY, moveInput.y,
 						dampenTime, Time.deltaTime * smoothTime);
 				}
 			}

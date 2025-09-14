@@ -9,9 +9,13 @@ namespace BLINK.Controller
 {
     public class RPGBThirdPersonCharacterControllerEssentials : RPGBCharacterControllerEssentials
     {
+        private static readonly int Dead = Animator.StringToHash("Dead");
+        private static readonly int IsFlying = Animator.StringToHash("isFlying");
+        private static readonly int IsAiming = Animator.StringToHash("isAiming");
+        private static readonly int Casting = Animator.StringToHash("Casting");
         public RPGBThirdPersonController controller;
 
-        protected static readonly int moveSpeedModifier = Animator.StringToHash("MoveSpeedModifier");
+        // protected static readonly int moveSpeedModifier = Animator.StringToHash("MoveSpeedModifier");
 
         /*
         -- EVENT FUNCTIONS --
@@ -53,7 +57,7 @@ namespace BLINK.Controller
         public override void InitDeath()
         {
             anim.Rebind();
-            anim.SetBool("Dead", true);
+            anim.SetBool(Dead, true);
             ResetCameraAiming();
             ResetCameraMouseLook();
         }
@@ -61,7 +65,7 @@ namespace BLINK.Controller
         public override void CancelDeath()
         {
             anim.Rebind();
-            anim.SetBool("Dead", false);
+            anim.SetBool(Dead, false);
             if (controller.CameraSettings.CameraType == CameraSettings.CameraOptions.AimOnly)
             {
                 SetCameraAiming(true);
@@ -99,14 +103,14 @@ namespace BLINK.Controller
         {
             isFlying = true;
             controller.isFlying = true;
-            anim.SetBool("isFlying", true);
+            anim.SetBool(IsFlying, true);
         }
 
         public override void EndFlying()
         {
             isFlying = false;
             controller.isFlying = false;
-            anim.SetBool("isFlying", false);
+            anim.SetBool(IsFlying, false);
         }
 
         /*
@@ -238,8 +242,8 @@ namespace BLINK.Controller
             controller.RotationSettings.OrientRotationToMovement = !isAiming;
             isAimingTransition = true;
             
-            anim.SetBool("isAiming", isAiming);
-            if(GameState.playerEntity.IsMounted()) GameState.playerEntity.GetMountAnimator().SetBool("isAiming", isAiming);
+            anim.SetBool(IsAiming, isAiming);
+            if(GameState.playerEntity.IsMounted()) GameState.playerEntity.GetMountAnimator().SetBool(IsAiming, isAiming);
             
             if (isAiming) GameEvents.Instance.OnEnterAimMode();
             else GameEvents.Instance.OnExitAimMode();
@@ -252,8 +256,8 @@ namespace BLINK.Controller
             controller.RotationSettings.OrientRotationToMovement = true;
             isAimingTransition = true;
             
-            anim.SetBool("isAiming", false);
-            if(GameState.playerEntity.IsMounted()) GameState.playerEntity.GetMountAnimator().SetBool("isAiming", false);
+            anim.SetBool(IsAiming, false);
+            if(GameState.playerEntity.IsMounted()) GameState.playerEntity.GetMountAnimator().SetBool(IsAiming, false);
             GameEvents.Instance.OnExitAimMode();
         }
 
@@ -505,7 +509,7 @@ namespace BLINK.Controller
 
         public override void HandleSprint()
         {
-            if (controller.CameraSettings.NormalFOV != controller.CameraSettings.SprintFOV)
+            if (!Mathf.Approximately(controller.CameraSettings.NormalFOV, controller.CameraSettings.SprintFOV))
             {
                 controller._playerCamera.GetCamera().fieldOfView = Mathf.Lerp(controller._playerCamera.GetCamera().fieldOfView,
                     controller.CameraSettings.SprintFOV, Time.deltaTime * controller.CameraSettings.FOVLerpSpeed);
@@ -570,6 +574,7 @@ namespace BLINK.Controller
             {
                 ResetStandTime();
             }
+            anim.SetBool(Casting, false);
         }
     }
 }

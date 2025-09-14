@@ -13,6 +13,12 @@ namespace BLINK.RPGBuilder.Characters
 {
     public class RPGBCharacterController : MonoBehaviour
     {
+        private static readonly int GroundDistance = Animator.StringToHash("GroundDistance");
+        private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
+        private static readonly int Jump = Animator.StringToHash("Jump");
+        private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+        private static readonly int Direction = Animator.StringToHash("direction");
+        private static readonly int StrafeDir = Animator.StringToHash("strafeDir");
 
         public RPGBCharacterControllerEssentials ControllerEssentials;
         
@@ -202,11 +208,11 @@ namespace BLINK.RPGBuilder.Characters
                     isGrounded = true;
                 else
                     isGrounded = false;
-                anim.SetFloat("GroundDistance", hit.distance);
+                anim.SetFloat(GroundDistance, hit.distance);
             }
             else
             {
-                anim.SetFloat("GroundDistance", 1000);
+                anim.SetFloat(GroundDistance, 1000);
             }
 
             if (ControllerEssentials.isTeleporting) return;
@@ -232,7 +238,7 @@ namespace BLINK.RPGBuilder.Characters
                 if(currentController == ControllerType.ClickMove) ApplyRotation();
             }
 
-            anim.SetBool("isGrounded", isGrounded);
+            anim.SetBool(IsGrounded, isGrounded);
 
         }
 
@@ -274,11 +280,11 @@ namespace BLINK.RPGBuilder.Characters
                 if (Input.GetKeyDown(RPGBuilderUtilities.GetCurrentKeyByActionKeyName("Jump")) && isGrounded)
                 {
                     playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * (Physics.gravity.y * gravityMod));
-                    anim.SetTrigger("Jump");
+                    anim.SetTrigger(Jump);
                 }
 
                 playerVelocity.y += Physics.gravity.y * Time.deltaTime;
-                if (isGrounded && playerVelocity.y < 0 && anim.GetFloat("GroundDistance") < 1.1f) playerVelocity.y = 0f;
+                if (isGrounded && playerVelocity.y < 0 && anim.GetFloat(GroundDistance) < 1.1f) playerVelocity.y = 0f;
                 characterController.Move(playerVelocity * Time.deltaTime);
             }
 
@@ -290,8 +296,8 @@ namespace BLINK.RPGBuilder.Characters
                 {
                     if (Input.GetKey(KeyCode.Mouse0))
                     {
-                        tpRef.parent.Rotate(Vector3.up * Input.GetAxis("Mouse X") * mouseSensitivity, Space.Self);
-                        tpRef.parent.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * mouseSensitivity * invertMouse, Space.Self);
+                        tpRef.parent.Rotate(Vector3.up * (Input.GetAxis("Mouse X") * mouseSensitivity), Space.Self);
+                        tpRef.parent.Rotate(Vector3.right * (Input.GetAxis("Mouse Y") * mouseSensitivity * invertMouse), Space.Self);
                         intendeRot = ClampRotationAroundXAxis(tpRef.parent.localRotation);
                         tpRef.parent.localRotation = intendeRot;
                     }
@@ -302,9 +308,9 @@ namespace BLINK.RPGBuilder.Characters
                             transform.eulerAngles = new Vector3(transform.eulerAngles.x, tpRef.parent.eulerAngles.y, transform.eulerAngles.z);
                             tpRef.parent.localEulerAngles = new Vector3(tpRef.parent.localEulerAngles.x, 0, tpRef.parent.localEulerAngles.z);
                         }
-                        transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * mouseSensitivity);
+                        transform.Rotate(Vector3.up * (Input.GetAxis("Mouse X") * mouseSensitivity));
 
-                        tpRef.parent.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * mouseSensitivity * invertMouse, Space.Self);
+                        tpRef.parent.Rotate(Vector3.right * (Input.GetAxis("Mouse Y") * mouseSensitivity * invertMouse), Space.Self);
                         intendeRot = ClampRotationAroundXAxis(tpRef.parent.localRotation);
                         tpRef.parent.localRotation = intendeRot;
                     }
@@ -312,16 +318,16 @@ namespace BLINK.RPGBuilder.Characters
             }
             else
             {
-                transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * mouseSensitivity);
+                transform.Rotate(Vector3.up * (Input.GetAxis("Mouse X") * mouseSensitivity));
 
-                tpRef.parent.Rotate(Vector3.right * Input.GetAxis("Mouse Y") * mouseSensitivity * invertMouse, Space.Self);
+                tpRef.parent.Rotate(Vector3.right * (Input.GetAxis("Mouse Y") * mouseSensitivity * invertMouse), Space.Self);
                 intendeRot = ClampRotationAroundXAxis(tpRef.parent.localRotation);
                 tpRef.parent.localRotation = intendeRot;
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") == 0) return;
             if (UIEvents.Instance.CursorHoverUI) return;
-            tpRef.Translate(Vector3.forward * mouseZoomSpeed * Input.GetAxis("Mouse ScrollWheel"), Space.Self);
+            tpRef.Translate(Vector3.forward * (mouseZoomSpeed * Input.GetAxis("Mouse ScrollWheel")), Space.Self);
             tpRef.localPosition = new Vector3(tpRef.localPosition.x, tpRef.localPosition.y, Mathf.Clamp(tpRef.localPosition.z, minZoom, maxZoom));
             tpDistance = Vector3.Distance(tpRef.position, transform.position);
             #endregion
@@ -336,9 +342,9 @@ namespace BLINK.RPGBuilder.Characters
             transform.rotation = startRot;
             rbd.isKinematic = false;
             anim.transform.localRotation = Quaternion.identity;
-            anim.SetFloat("MoveSpeed", 0);
-            anim.SetFloat("direction", 0);
-            anim.SetFloat("strafeDir", 0);
+            anim.SetFloat(MoveSpeed, 0);
+            anim.SetFloat(Direction, 0);
+            anim.SetFloat(StrafeDir, 0);
 
             switch (currentController)
             {
@@ -421,13 +427,13 @@ namespace BLINK.RPGBuilder.Characters
                     }
                 }
 
-                var currentDirect = anim.GetFloat("direction");
+                var currentDirect = anim.GetFloat(Direction);
                 currentDirect = Mathf.Lerp(currentDirect, direct, 5 * Time.deltaTime);
-                anim.SetFloat("direction", currentDirect);
+                anim.SetFloat(Direction, currentDirect);
 
-                var currentStrafe = anim.GetFloat("strafeDir");
+                var currentStrafe = anim.GetFloat(StrafeDir);
                 currentStrafe = Mathf.Lerp(currentStrafe, strafeDir, 5 * Time.deltaTime);
-                anim.SetFloat("strafeDir", currentStrafe);
+                anim.SetFloat(StrafeDir, currentStrafe);
 
 
             }
@@ -437,9 +443,9 @@ namespace BLINK.RPGBuilder.Characters
             }
 
 
-            var currentSpeed = anim.GetFloat("MoveSpeed");
+            var currentSpeed = anim.GetFloat(MoveSpeed);
             currentSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, 10 * Time.deltaTime);
-            anim.SetFloat("MoveSpeed", currentSpeed);
+            anim.SetFloat(MoveSpeed, currentSpeed);
             ApplyRotation();
             if (lastPos != transform.position)
                 OnMove?.Invoke();
@@ -498,9 +504,9 @@ namespace BLINK.RPGBuilder.Characters
                 }
             }
             desiredSpeed = Mathf.InverseLerp(0, 1, (lastPos - transform.position).magnitude / Time.deltaTime);
-            var currentSpeed = anim.GetFloat("MoveSpeed");
+            var currentSpeed = anim.GetFloat(MoveSpeed);
             currentSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, 10 * Time.deltaTime);
-            anim.SetFloat("MoveSpeed", currentSpeed);
+            anim.SetFloat(MoveSpeed, currentSpeed);
 
             if (lastPos != transform.position)
                 OnMove?.Invoke();
@@ -548,13 +554,13 @@ namespace BLINK.RPGBuilder.Characters
                         direct = .5f;
                 }
 
-                var currentDirect = anim.GetFloat("direction");
+                var currentDirect = anim.GetFloat(Direction);
                 currentDirect = Mathf.Lerp(currentDirect, direct, 5 * Time.deltaTime);
-                anim.SetFloat("direction", currentDirect);
+                anim.SetFloat(Direction, currentDirect);
 
-                var currentStrafe = anim.GetFloat("strafeDir");
+                var currentStrafe = anim.GetFloat(StrafeDir);
                 currentStrafe = Mathf.Lerp(currentStrafe, strafeDir, 5 * Time.deltaTime);
-                anim.SetFloat("strafeDir", currentStrafe);
+                anim.SetFloat(StrafeDir, currentStrafe);
             }
             else
             {
@@ -562,9 +568,9 @@ namespace BLINK.RPGBuilder.Characters
             }
 
 
-            var currentSpeed = anim.GetFloat("MoveSpeed");
+            var currentSpeed = anim.GetFloat(MoveSpeed);
             currentSpeed = Mathf.Lerp(currentSpeed, desiredSpeed, 10 * Time.deltaTime);
-            anim.SetFloat("MoveSpeed", currentSpeed);
+            anim.SetFloat(MoveSpeed, currentSpeed);
 
             if (lastPos != transform.position)
                 OnMove?.Invoke();

@@ -14,6 +14,7 @@ namespace BLINK.RPGBuilder.Managers
         [SerializeField] private Image petsHealthBar;
         [SerializeField] private TextMeshProUGUI summonCountText;
 
+#pragma warning disable CS0414 // Field is assigned but its value is never used
         private bool showing;
         
         private void OnEnable()

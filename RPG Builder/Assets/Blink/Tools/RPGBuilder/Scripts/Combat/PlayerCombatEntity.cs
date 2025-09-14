@@ -18,6 +18,8 @@ namespace BLINK.RPGBuilder.Combat
     [RequireComponent(typeof(Animator))]
     public class PlayerCombatEntity : CombatEntity
     {
+        private static readonly int Stunned = Animator.StringToHash("Stunned");
+        private static readonly int Blocking = Animator.StringToHash("isActiveBlocking");
         public RPGBCharacterControllerEssentials controllerEssentials;
         public PlayerAppearance appearance;
         public GroundIndicatorManager indicatorManagerRef;
@@ -330,7 +332,7 @@ namespace BLINK.RPGBuilder.Combat
         protected override bool CanShift(CombatData.CombatEntityStat stat)
         {
             if (controllerEssentials.isSprinting() && !stat.stat.isShiftingInSprint) return false;
-            if (stat.currentValue == stat.currentMaxValue)
+            if (Mathf.Approximately(stat.currentValue, stat.currentMaxValue))
             {
                 return false;
             }
@@ -722,7 +724,7 @@ namespace BLINK.RPGBuilder.Combat
                 case RPGEffect.EFFECT_TYPE.Stun:
                 case RPGEffect.EFFECT_TYPE.Sleep:
                 case RPGEffect.EFFECT_TYPE.Root:
-                    ThisAnimator.SetBool("Stunned", false);
+                    ThisAnimator.SetBool(Stunned, false);
                     break;
                 case RPGEffect.EFFECT_TYPE.Shapeshifting:
                     if (IsShapeshifted()) ResetShapeshifting();
@@ -1044,7 +1046,7 @@ namespace BLINK.RPGBuilder.Combat
                 ActiveBlockingState.curBlockPowerModifier = 100;
             }
 
-            controllerEssentials.anim.SetBool("isActiveBlocking", true);
+            controllerEssentials.anim.SetBool(Blocking, true);
             CombatEvents.Instance.OnPlayerStartedActiveBlocking();
         }
 
@@ -1159,7 +1161,7 @@ namespace BLINK.RPGBuilder.Combat
         public override void ResetActiveBlocking()
         {
             base.ResetActiveBlocking();
-            controllerEssentials.anim.SetBool("isActiveBlocking", false);
+            controllerEssentials.anim.SetBool(Blocking, false);
             CombatEvents.Instance.OnPlayerStoppedActiveBlocking();
         }
 

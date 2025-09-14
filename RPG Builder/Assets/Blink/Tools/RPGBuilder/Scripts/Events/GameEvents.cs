@@ -63,6 +63,7 @@ public class GameEvents : MonoBehaviour
     // LOOT
     public static event Action LootAllBag;
     public static event Action<LootBag> DisplayLootBag;
+#pragma warning disable CS0067 // Event is never used
     public static event Action<LootBag> LootItem;
     
     // VISUAL EFFECTS
