@@ -53,6 +53,7 @@ namespace BLINK.RPGBuilder.AI
                 float distanceMoved = Vector3.Distance(previousPosition, ThisAIEntity.transform.position);
                 if (distanceMoved < 3f)
                 {
+                    Debug.Log("AI has moved less than 3 meters in the last 5 seconds. Finding a new valid point and making the AI walk there.");
                     GetNewRoamingPoint();
                 }
                 else
@@ -162,6 +163,7 @@ namespace BLINK.RPGBuilder.AI
             while (attempts < maxAttempts && !foundPoint)
             {
                 attempts++;
+                Debug.Log($"[AIStateRoaming] Attempt {attempts} to find a valid point.");
 
                 pos = TryGetValidPoint(basePosition, height, groundLayers, timeLimit);
 

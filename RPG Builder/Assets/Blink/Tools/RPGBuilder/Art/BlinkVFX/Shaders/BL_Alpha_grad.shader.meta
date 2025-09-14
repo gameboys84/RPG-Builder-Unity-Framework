@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 59d416e21b428ff4ea93f2069db06b2f
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177657
+  packageName: RPG Builder
+  packageVersion: 2.2
+  assetPath: Assets/Blink/Tools/RPGBuilder/Art/BlinkVFX/Shaders/BL_Alpha_grad.shader
+  uploadId: 720622
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
@@ -8,10 +15,3 @@ ShaderImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 177657
-  packageName: RPG Builder
-  packageVersion: 2.2
-  assetPath: Assets/Blink/Tools/RPGBuilder/Art/BlinkVFX/Shaders/BL_Alpha_grad.shader
-  uploadId: 720622

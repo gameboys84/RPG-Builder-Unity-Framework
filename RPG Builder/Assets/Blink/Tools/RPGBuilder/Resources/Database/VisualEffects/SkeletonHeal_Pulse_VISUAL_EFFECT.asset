@@ -18,7 +18,8 @@ MonoBehaviour:
   entryDisplayName: 
   entryIcon: {fileID: 0}
   entryDescription: 
-  Prefabs: []
+  Prefabs:
+  - {fileID: 1547027033286818906, guid: 28cb1dc143ec45d468fbfbfef834b262, type: 3}
   SoundTemplates: []
   ParentSoundToPrefab: 0
   IsDestroyedOnDeath: 0

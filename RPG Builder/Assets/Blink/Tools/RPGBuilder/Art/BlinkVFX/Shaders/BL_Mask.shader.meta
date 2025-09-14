@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 7dd7509b8c47a2b49b175361376ae486
+AssetOrigin:
+  serializedVersion: 1
+  productId: 177657
+  packageName: RPG Builder
+  packageVersion: 2.2
+  assetPath: Assets/Blink/Tools/RPGBuilder/Art/BlinkVFX/Shaders/BL_Mask.shader
+  uploadId: 720622
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
@@ -8,10 +15,3 @@ ShaderImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 177657
-  packageName: RPG Builder
-  packageVersion: 2.2
-  assetPath: Assets/Blink/Tools/RPGBuilder/Art/BlinkVFX/Shaders/BL_Mask.shader
-  uploadId: 720622

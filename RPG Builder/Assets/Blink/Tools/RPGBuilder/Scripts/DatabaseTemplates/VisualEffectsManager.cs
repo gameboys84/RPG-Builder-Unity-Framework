@@ -42,7 +42,6 @@ public class VisualEffectsManager : MonoBehaviour
     private IEnumerator TriggerVisualEffect(CombatEntity entity, VisualEffectEntry visualEffect)
     {
         yield return new WaitForSeconds(visualEffect.Delay);
-        if (visualEffect.Template.Prefabs.Count == 0) yield break;
         int randomPrefab = Random.Range(0, visualEffect.Template.Prefabs.Count);
         if (visualEffect.Template.Prefabs[randomPrefab] != null)
         {
