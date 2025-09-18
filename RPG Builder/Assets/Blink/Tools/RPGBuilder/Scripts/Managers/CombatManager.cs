@@ -2351,7 +2351,7 @@ namespace BLINK.RPGBuilder.Managers
             GameObject logicTemplate = GetAILogicTemplate(npcData);
             if (logicTemplate == null) return null;
             GameObject newNPC = Instantiate(logicTemplate, spawnPos, rotation);
-            newNPC.name = npcData.entryName;
+            newNPC.name = npcData.entryName + "_" + newNPC.GetInstanceID();
             
             CombatEntity entity = newNPC.GetComponent<CombatEntity>();
             if (entity == null)

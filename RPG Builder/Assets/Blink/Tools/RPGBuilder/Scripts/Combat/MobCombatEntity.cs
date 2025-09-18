@@ -12,6 +12,7 @@ namespace BLINK.RPGBuilder.Combat
 {
     public class MobCombatEntity : CombatEntity
     {
+        private static readonly int Death = Animator.StringToHash("Death");
         private RPGNpc npc;
         private AIEntity AIEntity;
 
@@ -482,13 +483,15 @@ namespace BLINK.RPGBuilder.Combat
 
             if (Spawner != null)
             {
-                Spawner.SpawningCoroutines.Add(Spawner.StartCoroutine(Spawner.ExecuteSpawner(Spawner.OverrideRespawn
+                var delay = Spawner.OverrideRespawn
                     ? Random.Range(Spawner.MinRespawn, Spawner.MaxRespawn)
-                    : Random.Range(npc.MinRespawn, npc.MaxRespawn))));
+                    : Random.Range(npc.MinRespawn, npc.MaxRespawn);
+                Spawner.Respawn(delay);
+                // Spawner.SpawningCoroutines.Add(Spawner.StartCoroutine(Spawner.ExecuteSpawner(delay)));
             }
             
             ThisAnimator.Rebind();
-            ThisAnimator.SetTrigger("Death");
+            ThisAnimator.SetTrigger(Death);
             AIEntity.StartCoroutine(AIEntity.Death());
             RemoveFromEntityList();
         }

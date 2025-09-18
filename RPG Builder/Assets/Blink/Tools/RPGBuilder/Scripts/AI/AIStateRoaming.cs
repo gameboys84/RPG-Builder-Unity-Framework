@@ -53,7 +53,8 @@ namespace BLINK.RPGBuilder.AI
                 float distanceMoved = Vector3.Distance(previousPosition, ThisAIEntity.transform.position);
                 if (distanceMoved < 3f)
                 {
-                    Debug.Log("AI has moved less than 3 meters in the last 5 seconds. Finding a new valid point and making the AI walk there.");
+                    // 这个单纯是两次移动间隔, 到达上一个目标点后，5秒后会重新寻找一次新的目标进行移动
+                    // Debug.Log("AI has moved less than 3 meters in the last 5 seconds. Finding a new valid point and making the AI walk there.");
                     GetNewRoamingPoint();
                 }
                 else
@@ -178,8 +179,11 @@ namespace BLINK.RPGBuilder.AI
                 }
             }
 
-            Debug.LogWarning("[AIStateRoaming] Failed to find a valid point after 5 attempts. Destroying AI entity.");
+            Debug.LogWarning($"[AIStateRoaming] Failed to find a valid point after 5 attempts. Respawn AI entity, name:{ThisAIEntity.gameObject.name}, pos:{ThisAIEntity.transform.position}.");
+            // 直接销毁就再也不会刷新了
             Destroy(ThisAIEntity.gameObject);
+            ThisAIEntity.ThisCombatEntity.GetSpawner().Respawn();
+            
             return basePosition;
         }
 

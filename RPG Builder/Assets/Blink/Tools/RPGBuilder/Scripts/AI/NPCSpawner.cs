@@ -89,6 +89,9 @@ namespace BLINK.RPGBuilder.AI
             GameState.Instance.AddSpawnerToList(this);
         }
 
+        //TODO: NPC的刷新应该由 spawner 内部自己管理，而不是由外部主动调用刷新， 同时内部还应定时监控数量，在数量少于一定程度时进行补充
+        // 补充规则甚至还可以基于周围活跃玩家人数来决定
+        
         public void Initialize()
         {
             if (!IsActive) return;
@@ -205,6 +208,15 @@ namespace BLINK.RPGBuilder.AI
             return Physics.Raycast(spawnPos, -transform.up, out var hit, areaHeight, groundLayers)
                 ? hit.point
                 : position;
+        }
+
+        public void Respawn(float delay = -1f)
+        {
+            if (delay < 0)
+            {
+                delay = Random.Range(MinRespawn, MaxRespawn);
+            }
+            SpawningCoroutines.Add(StartCoroutine(ExecuteSpawner(delay)));
         }
 
         public void ManualSpawnNPC()
