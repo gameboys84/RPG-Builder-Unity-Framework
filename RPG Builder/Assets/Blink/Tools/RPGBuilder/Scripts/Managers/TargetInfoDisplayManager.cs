@@ -102,7 +102,7 @@ namespace BLINK.RPGBuilder.Managers
         
         protected virtual void OnTargetStatChanged(CombatEntity entity, RPGStat stat, float newValue, float maxValue)
         {
-            if (entity != GameState.playerEntity.GetTarget()) return;
+            if (entity != GameState.playerEntity?.GetTarget()) return;
             UpdateStatDisplay(stat, newValue, maxValue);
         }
         

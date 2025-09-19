@@ -121,6 +121,11 @@ namespace BLINK.RPGBuilder.UIElements
             if (thisItem != null) ItemTooltip.Instance.Show(thisItem.ID, -1, true);
             if (thisCurrency != null) ItemTooltip.Instance.ShowCurrencyTooltip(thisCurrency.ID);
             if (thisTreePoint != null) ItemTooltip.Instance.ShowTreePointTooltip(thisTreePoint.ID);
+            
+            if (thisRewardDATA.rewardType == RPGQuest.QuestRewardType.Experience)
+            {
+                ItemTooltip.Instance.ShowCustomTooltip("EXPERIENCE", experienceIcon);
+            }
         }
 
         public void HideTooltip()

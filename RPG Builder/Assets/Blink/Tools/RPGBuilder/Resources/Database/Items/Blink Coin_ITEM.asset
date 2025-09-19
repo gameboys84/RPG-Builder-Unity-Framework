@@ -17,7 +17,7 @@ MonoBehaviour:
   entryFileName: Blink Coin_ITEM
   entryDisplayName: Blink Coin
   entryIcon: {fileID: 21300000, guid: 028ae031cde94e148944d35b176ce85f, type: 3}
-  entryDescription: 
+  entryDescription: Very important coin.
   _name: 
   _fileName: 
   displayName: 

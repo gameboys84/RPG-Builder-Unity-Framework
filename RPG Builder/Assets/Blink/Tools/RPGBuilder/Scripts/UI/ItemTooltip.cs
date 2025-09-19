@@ -113,6 +113,17 @@ namespace BLINK.RPGBuilder.UI
             HandleShowTooltip();
         }
 
+        public void ShowCustomTooltip(string displayName, Sprite entryIcon)
+        {
+            ResetContent();
+
+            itemNameText.text = displayName;
+            icon.sprite = entryIcon;
+            itemBackground.enabled = false;
+            itemSlotTypeText.text = "";
+            HandleShowTooltip();
+        }
+
         private Coroutine tooltipVisibleCoroutine;
         private IEnumerator tooltipVisible()
         {

@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb18b8dfb0f3be4cb9856d31baa677e, type: 3}
+  m_Name: Kill 5 bears and collect_QUEST
+  m_EditorClassIdentifier: 
+  ID: 2
+  entryName: Kill 5 bears and collect
+  entryFileName: Kill 5 bears and collect_QUEST
+  entryDisplayName: Kill 5 bears and collect
+  entryIcon: {fileID: 0}
+  entryDescription: Good, Now there are some other animals , make sure to finish
+    them and come back for rewards.
+  _name: 
+  displayName: 
+  _fileName: 
+  description: 
+  ObjectiveText: Find and kill 5 bears and give me 5 bear fur to prove it.
+  ProgressText: Find and kill them.
+  repeatable: 0
+  canBeTurnedInWithoutNPC: 0
+  Requirements: []
+  UseRequirementsTemplate: 0
+  RequirementsTemplate: {fileID: 0}
+  itemsGiven: []
+  objectives:
+  - objectiveType: 0
+    taskID: 2
+    timeLimit: 0
+  - objectiveType: 0
+    taskID: 3
+    timeLimit: 0
+  rewardsGiven:
+  - rewardType: 0
+    itemID: 13
+    currencyID: -1
+    treePointID: -1
+    factionID: -1
+    weaponTemplateID: -1
+    count: 3
+    Experience: 0
+  - rewardType: 1
+    itemID: -1
+    currencyID: 0
+    treePointID: -1
+    factionID: -1
+    weaponTemplateID: -1
+    count: 30
+    Experience: 0
+  - rewardType: 3
+    itemID: -1
+    currencyID: -1
+    treePointID: -1
+    factionID: -1
+    weaponTemplateID: -1
+    count: 0
+    Experience: 30
+  rewardsToPick:
+  - rewardType: 0
+    itemID: 31
+    currencyID: -1
+    treePointID: -1
+    factionID: -1
+    weaponTemplateID: -1
+    count: 1
+    Experience: 0
+  - rewardType: 0
+    itemID: 34
+    currencyID: -1
+    treePointID: -1
+    factionID: -1
+    weaponTemplateID: -1
+    count: 1
+    Experience: 0

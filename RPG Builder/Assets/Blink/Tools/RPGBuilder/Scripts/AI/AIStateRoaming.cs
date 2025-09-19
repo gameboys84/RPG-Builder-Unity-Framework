@@ -164,7 +164,7 @@ namespace BLINK.RPGBuilder.AI
             while (attempts < maxAttempts && !foundPoint)
             {
                 attempts++;
-                Debug.Log($"[AIStateRoaming] Attempt {attempts} to find a valid point.");
+                // Debug.Log($"[AIStateRoaming] Attempt {attempts} to find a valid point.");
 
                 pos = TryGetValidPoint(basePosition, height, groundLayers, timeLimit);
 
@@ -203,7 +203,7 @@ namespace BLINK.RPGBuilder.AI
 
             if (pos == basePosition)
             {
-                Debug.LogWarning("[AIStateRoaming] Failed to find a valid point within the time limit.");
+                Debug.LogWarning($"[AIStateRoaming] Failed to find a valid point within the time limit:{timeLimit}s. name:{ThisAIEntity.gameObject.name}, pos:{ThisAIEntity.transform.position}， basePosition：{basePosition}");
             }
 
             return pos;
