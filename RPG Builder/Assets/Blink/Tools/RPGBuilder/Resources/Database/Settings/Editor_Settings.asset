@@ -29,4 +29,6 @@ MonoBehaviour:
     scene: {fileID: 102900000, guid: 59589b435ddfedf48ac45ca0aab6638b, type: 3}
   - sceneName: Demo
     scene: {fileID: 102900000, guid: 1f6bc91b6f0af0e4d9d9848d3c0323fa, type: 3}
+  - sceneName: PublicMap
+    scene: {fileID: 102900000, guid: 5fbffcff512999f4fb991953f4bb2c61, type: 3}
   characterSelectedName: 
